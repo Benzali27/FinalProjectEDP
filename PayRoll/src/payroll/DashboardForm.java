@@ -9,21 +9,30 @@ public class DashboardForm extends javax.swing.JFrame {
     initComponents();
     setLocationRelativeTo(null);
     setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-    
+
     contentPanel.add(new EmployeePanel(), "employee");
+    contentPanel.add(new AttendancePanel(), "attendance");
+    contentPanel.add(new CalendarPanel(), "calendar");
+    contentPanel.add(new PayrollPanel(), "payroll");
     
+
     // Live date
     java.time.LocalDate today = java.time.LocalDate.now();
     java.time.format.DateTimeFormatter dateFmt = java.time.format.DateTimeFormatter.ofPattern("MMM d, yyyy");
     java.time.format.DateTimeFormatter dayFmt = java.time.format.DateTimeFormatter.ofPattern("EEEE");
     dateValueLbl.setText(today.format(dateFmt));
     DateLbl.setText(today.format(dayFmt));
-    
+
     // Nav buttons
-    btnDashboard.addActionListener(e -> showCard("card2"));
+    btnDashboard.addActionListener(e -> {
+        showCard("card2");
+        DashBoardLbl.setText("Dashboard");
+    });
     btnEmployee.addActionListener(e -> showCard("employee"));
     btnAttendance.addActionListener(e -> showCard("attendance"));
-    btnCalendar.addActionListener(e -> showCard("calendar"));
+    btnCalendar.addActionListener(e ->{ showCard("calendar");
+        DashBoardLbl.setText("Payroll Calendar");
+    });
     btnPayroll.addActionListener(e -> showCard("payroll"));
     btnPayslip.addActionListener(e -> showCard("payslip"));
     btnLogOut.addActionListener(e -> {
@@ -36,21 +45,6 @@ private void showCard(String card) {
     java.awt.CardLayout cl = (java.awt.CardLayout) contentPanel.getLayout();
     cl.show(contentPanel, card);
     DashBoardLbl.setText(card.substring(0,1).toUpperCase() + card.substring(1));
-}
-
-private void drawDonutChart(java.awt.Graphics g) {
-    java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
-    g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,
-                        java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
-    int x = 20, y = 20, size = 120;
-    g2.setColor(new java.awt.Color(79, 142, 247));
-    g2.fillArc(x, y, size, size, 90, -120);
-    g2.setColor(new java.awt.Color(247, 147, 79));
-    g2.fillArc(x, y, size, size, -30, -120);
-    g2.setColor(new java.awt.Color(79, 247, 176));
-    g2.fillArc(x, y, size, size, -150, -120);
-    g2.setColor(new java.awt.Color(21, 24, 32));
-    g2.fillOval(45, 45, 70, 70);
 }
    
     @SuppressWarnings("unchecked")
@@ -77,6 +71,12 @@ private void drawDonutChart(java.awt.Graphics g) {
         totalEmpValueLbl = new javax.swing.JLabel();
         AttendanceCard = new javax.swing.JPanel();
         AttendanceLbl = new javax.swing.JLabel();
+        OntimeBar = new javax.swing.JProgressBar();
+        LateBar = new javax.swing.JProgressBar();
+        AbsentBar = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         dateCard = new javax.swing.JPanel();
         DateLbl = new javax.swing.JLabel();
         dateValueLbl = new javax.swing.JLabel();
@@ -84,13 +84,16 @@ private void drawDonutChart(java.awt.Graphics g) {
         ExportLbl = new javax.swing.JLabel();
         Datalbl = new javax.swing.JLabel();
         InternValueLbl = new javax.swing.JPanel();
-        donutChartPanel = new javax.swing.JPanel();
         FulltimeLbl = new javax.swing.JLabel();
         PartimeLbl = new javax.swing.JLabel();
         InternLbl = new javax.swing.JLabel();
         FulltimeValueLbl = new javax.swing.JLabel();
         PartimeValueLbl = new javax.swing.JLabel();
         InternValueLBL = new javax.swing.JLabel();
+        FulltimeBarPanel = new javax.swing.JPanel();
+        PartTimeBarPanel = new javax.swing.JPanel();
+        InternBarPanel = new javax.swing.JPanel();
+        EmployeeTypeLbl = new javax.swing.JLabel();
         EmployeeStatusCard = new javax.swing.JPanel();
         GwenCard = new javax.swing.JPanel();
         GwenIconLbl = new javax.swing.JLabel();
@@ -194,9 +197,9 @@ private void drawDonutChart(java.awt.Graphics g) {
         topBarPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, new java.awt.Color(32, 42, 56)));
         topBarPanel.setPreferredSize(new java.awt.Dimension(1280, 150));
 
-        DashBoardLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DashBoardLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         DashBoardLbl.setForeground(new java.awt.Color(255, 255, 255));
-        DashBoardLbl.setText("DASHBOARD");
+        DashBoardLbl.setText("Dashboard");
 
         logoLbl.setFont(new java.awt.Font("Unispace", 0, 14)); // NOI18N
         logoLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,7 +217,7 @@ private void drawDonutChart(java.awt.Graphics g) {
                     .addGroup(topBarPanelLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(logoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1589, Short.MAX_VALUE))
+                .addContainerGap(1593, Short.MAX_VALUE))
         );
         topBarPanelLayout.setVerticalGroup(
             topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +226,7 @@ private void drawDonutChart(java.awt.Graphics g) {
                 .addComponent(logoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(DashBoardLbl)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         getContentPane().add(topBarPanel, java.awt.BorderLayout.PAGE_START);
@@ -255,7 +258,7 @@ private void drawDonutChart(java.awt.Graphics g) {
                     .addGroup(totalEmpCardLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(totalEmpTitleLbl)))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         totalEmpCardLayout.setVerticalGroup(
             totalEmpCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,6 +277,25 @@ private void drawDonutChart(java.awt.Graphics g) {
         AttendanceLbl.setForeground(new java.awt.Color(255, 255, 255));
         AttendanceLbl.setText("Attendance Overview");
 
+        OntimeBar.setForeground(new java.awt.Color(79, 247, 176));
+        OntimeBar.setValue(66);
+        OntimeBar.setOpaque(true);
+
+        LateBar.setForeground(new java.awt.Color(247, 147, 79));
+        LateBar.setValue(17);
+
+        AbsentBar.setForeground(new java.awt.Color(247, 79, 122));
+        AbsentBar.setValue(10);
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("● On Time  75%");
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("● Late  15%");
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("● Absent  10%");
+
         javax.swing.GroupLayout AttendanceCardLayout = new javax.swing.GroupLayout(AttendanceCard);
         AttendanceCard.setLayout(AttendanceCardLayout);
         AttendanceCardLayout.setHorizontalGroup(
@@ -281,14 +303,41 @@ private void drawDonutChart(java.awt.Graphics g) {
             .addGroup(AttendanceCardLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(AttendanceLbl)
-                .addContainerGap(536, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(AttendanceCardLayout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(OntimeBar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LateBar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AbsentBar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         AttendanceCardLayout.setVerticalGroup(
             AttendanceCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AttendanceCardLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(AttendanceLbl)
-                .addContainerGap(70, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AttendanceCardLayout.createSequentialGroup()
+                .addGroup(AttendanceCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(AttendanceCardLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(AttendanceLbl)
+                        .addGap(18, 25, Short.MAX_VALUE)
+                        .addGroup(AttendanceCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(OntimeBar, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(AttendanceCardLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(AttendanceCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(AbsentBar, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(LateBar, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
+                .addGap(33, 33, 33))
         );
 
         dateCard.setBackground(new java.awt.Color(21, 24, 32));
@@ -356,20 +405,6 @@ private void drawDonutChart(java.awt.Graphics g) {
         InternValueLbl.setBackground(new java.awt.Color(21, 24, 32));
         InternValueLbl.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        donutChartPanel.setBackground(new java.awt.Color(21, 24, 32));
-        donutChartPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout donutChartPanelLayout = new javax.swing.GroupLayout(donutChartPanel);
-        donutChartPanel.setLayout(donutChartPanelLayout);
-        donutChartPanelLayout.setHorizontalGroup(
-            donutChartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        donutChartPanelLayout.setVerticalGroup(
-            donutChartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         FulltimeLbl.setForeground(new java.awt.Color(255, 255, 255));
         FulltimeLbl.setText("Full-time");
 
@@ -388,55 +423,110 @@ private void drawDonutChart(java.awt.Graphics g) {
         InternValueLBL.setForeground(new java.awt.Color(255, 255, 255));
         InternValueLBL.setText("1");
 
+        FulltimeBarPanel.setBackground(new java.awt.Color(79, 142, 247));
+
+        javax.swing.GroupLayout FulltimeBarPanelLayout = new javax.swing.GroupLayout(FulltimeBarPanel);
+        FulltimeBarPanel.setLayout(FulltimeBarPanelLayout);
+        FulltimeBarPanelLayout.setHorizontalGroup(
+            FulltimeBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        FulltimeBarPanelLayout.setVerticalGroup(
+            FulltimeBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 94, Short.MAX_VALUE)
+        );
+
+        PartTimeBarPanel.setBackground(new java.awt.Color(247, 147, 79));
+
+        javax.swing.GroupLayout PartTimeBarPanelLayout = new javax.swing.GroupLayout(PartTimeBarPanel);
+        PartTimeBarPanel.setLayout(PartTimeBarPanelLayout);
+        PartTimeBarPanelLayout.setHorizontalGroup(
+            PartTimeBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        PartTimeBarPanelLayout.setVerticalGroup(
+            PartTimeBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        InternBarPanel.setBackground(new java.awt.Color(79, 247, 176));
+
+        javax.swing.GroupLayout InternBarPanelLayout = new javax.swing.GroupLayout(InternBarPanel);
+        InternBarPanel.setLayout(InternBarPanelLayout);
+        InternBarPanelLayout.setHorizontalGroup(
+            InternBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        InternBarPanelLayout.setVerticalGroup(
+            InternBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
+        );
+
+        EmployeeTypeLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EmployeeTypeLbl.setForeground(new java.awt.Color(255, 255, 255));
+        EmployeeTypeLbl.setText("Employee Types");
+
         javax.swing.GroupLayout InternValueLblLayout = new javax.swing.GroupLayout(InternValueLbl);
         InternValueLbl.setLayout(InternValueLblLayout);
         InternValueLblLayout.setHorizontalGroup(
             InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InternValueLblLayout.createSequentialGroup()
-                .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(InternValueLblLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addComponent(EmployeeTypeLbl)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InternValueLblLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(InternValueLblLayout.createSequentialGroup()
-                                .addComponent(InternLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(InternValueLBL))
-                            .addGroup(InternValueLblLayout.createSequentialGroup()
-                                .addComponent(PartimeLbl)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(InternValueLblLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InternValueLblLayout.createSequentialGroup()
+                                .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(InternValueLblLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(FulltimeValueLbl))
+                                    .addComponent(FulltimeBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(PartTimeBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(InternValueLblLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(PartimeValueLbl)))
+                                .addGap(28, 28, 28)
+                                .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(InternValueLblLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(InternValueLBL))
+                                    .addComponent(InternBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InternValueLblLayout.createSequentialGroup()
                                 .addComponent(FulltimeLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(FulltimeValueLbl))))
-                    .addGroup(InternValueLblLayout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(donutChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(InternValueLblLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PartimeValueLbl)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(PartimeLbl)
+                                .addGap(12, 12, 12)
+                                .addComponent(InternLbl)
+                                .addGap(24, 24, 24))))))
         );
         InternValueLblLayout.setVerticalGroup(
             InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InternValueLblLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(donutChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(InternValueLblLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(FulltimeValueLbl))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InternValueLblLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FulltimeLbl)))
+                .addGap(15, 15, 15)
+                .addComponent(EmployeeTypeLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(FulltimeBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PartTimeBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(InternBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
                 .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PartimeValueLbl)
-                    .addComponent(PartimeLbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(InternLbl)
-                    .addComponent(InternValueLBL))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(FulltimeValueLbl)
+                    .addComponent(InternValueLBL)
+                    .addComponent(PartimeValueLbl))
+                .addGap(11, 11, 11)
+                .addGroup(InternValueLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FulltimeLbl)
+                    .addComponent(PartimeLbl)
+                    .addComponent(InternLbl))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         EmployeeStatusCard.setBackground(new java.awt.Color(21, 24, 32));
@@ -578,17 +668,18 @@ private void drawDonutChart(java.awt.Graphics g) {
         EmployeeStatusCardLayout.setHorizontalGroup(
             EmployeeStatusCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeStatusCardLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(GwenCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122)
-                .addComponent(ZildjianCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                .addComponent(BenzaliCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115))
-            .addGroup(EmployeeStatusCardLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(EMPLbl)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(EmployeeStatusCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EmployeeStatusCardLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(GwenCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148)
+                        .addComponent(ZildjianCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157)
+                        .addComponent(BenzaliCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EmployeeStatusCardLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(EMPLbl)))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         EmployeeStatusCardLayout.setVerticalGroup(
             EmployeeStatusCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -610,18 +701,20 @@ private void drawDonutChart(java.awt.Graphics g) {
             .addGroup(dashboardCardLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(dashboardCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(InternValueLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalEmpCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(dashboardCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(totalEmpCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dashboardCardLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(InternValueLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22)
+                .addGroup(dashboardCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dashboardCardLayout.createSequentialGroup()
                         .addComponent(AttendanceCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dateCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
                         .addComponent(ExportCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(EmployeeStatusCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         dashboardCardLayout.setVerticalGroup(
             dashboardCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -636,7 +729,7 @@ private void drawDonutChart(java.awt.Graphics g) {
                 .addGroup(dashboardCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(InternValueLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(EmployeeStatusCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
 
         contentPanel.add(dashboardCard, "card2");
@@ -655,11 +748,13 @@ private void drawDonutChart(java.awt.Graphics g) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DashboardForm().setVisible(true);
+               
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar AbsentBar;
     private javax.swing.JPanel AttendanceCard;
     private javax.swing.JLabel AttendanceLbl;
     private javax.swing.JLabel BenzDeptLbl;
@@ -671,17 +766,23 @@ private void drawDonutChart(java.awt.Graphics g) {
     private javax.swing.JLabel DateLbl;
     private javax.swing.JLabel EMPLbl;
     private javax.swing.JPanel EmployeeStatusCard;
+    private javax.swing.JLabel EmployeeTypeLbl;
     private javax.swing.JPanel ExportCard;
     private javax.swing.JLabel ExportLbl;
+    private javax.swing.JPanel FulltimeBarPanel;
     private javax.swing.JLabel FulltimeLbl;
     private javax.swing.JLabel FulltimeValueLbl;
     private javax.swing.JPanel GwenCard;
     private javax.swing.JLabel GwenDeptLbl;
     private javax.swing.JLabel GwenIconLbl;
     private javax.swing.JLabel GwenLbl;
+    private javax.swing.JPanel InternBarPanel;
     private javax.swing.JLabel InternLbl;
     private javax.swing.JLabel InternValueLBL;
     private javax.swing.JPanel InternValueLbl;
+    private javax.swing.JProgressBar LateBar;
+    private javax.swing.JProgressBar OntimeBar;
+    private javax.swing.JPanel PartTimeBarPanel;
     private javax.swing.JLabel PartimeLbl;
     private javax.swing.JLabel PartimeValueLbl;
     private javax.swing.JPanel SidebarPanel;
@@ -702,7 +803,9 @@ private void drawDonutChart(java.awt.Graphics g) {
     private javax.swing.JPanel dashboardCard;
     private javax.swing.JPanel dateCard;
     private javax.swing.JLabel dateValueLbl;
-    private javax.swing.JPanel donutChartPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel logoLbl;
     private javax.swing.JPanel topBarPanel;
     private javax.swing.JPanel totalEmpCard;
