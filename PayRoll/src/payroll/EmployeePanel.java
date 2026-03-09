@@ -7,49 +7,79 @@ public class EmployeePanel extends javax.swing.JPanel {
   
     public EmployeePanel() {
         initComponents();
-         btnFilterAll.addActionListener(e -> {
+    
+    btnFilterAll.addActionListener(e -> {
         GwenCard.setVisible(true);
         ZildCard.setVisible(true);
         BenzCard.setVisible(true);
+        revalidate();
+        repaint();
     });
-
+    
     BtnFilterFull.addActionListener(e -> {
         GwenCard.setVisible(true);
         ZildCard.setVisible(false);
         BenzCard.setVisible(false);
+        revalidate();
+        repaint();
     });
-
+    
     BtnFilterPart.addActionListener(e -> {
         GwenCard.setVisible(false);
         ZildCard.setVisible(true);
         BenzCard.setVisible(false);
+        revalidate();
+        repaint();
     });
-
+    
     BtnFilterIntern.addActionListener(e -> {
         GwenCard.setVisible(false);
         ZildCard.setVisible(false);
         BenzCard.setVisible(true);
+        revalidate();
+        repaint();
     });
-
-    // Card click events
+    
     GwenCard.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Gweneth's Profile!");
+            javax.swing.JOptionPane.showMessageDialog(null, "Gweneth Angela Santiago\nEngineering | Senior Developer\nFull-Time");
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            GwenCard.setBackground(new java.awt.Color(28, 32, 48));
+            GwenCard.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            GwenCard.setBackground(new java.awt.Color(21, 24, 32));
         }
     });
-
+    
     ZildCard.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Zildjian's Profile!");
+            javax.swing.JOptionPane.showMessageDialog(null, "Zildjian Fajardo\nDesign | UI/UX Designer\nPart-Time");
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            ZildCard.setBackground(new java.awt.Color(28, 32, 48));
+            ZildCard.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            ZildCard.setBackground(new java.awt.Color(21, 24, 32));
         }
     });
-
+    
     BenzCard.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Benzali's Profile!");
+            javax.swing.JOptionPane.showMessageDialog(null, "Benzali Dail Mat Paat\nEngineering | Dev Intern\nIntern");
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            BenzCard.setBackground(new java.awt.Color(28, 32, 48));
+            BenzCard.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            BenzCard.setBackground(new java.awt.Color(21, 24, 32));
         }
     });
-    }
+}
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -84,7 +114,7 @@ public class EmployeePanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(13, 15, 20));
         setPreferredSize(new java.awt.Dimension(1280, 800));
 
-        EmpLbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        EmpLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         EmpLbl.setForeground(new java.awt.Color(255, 255, 255));
         EmpLbl.setText("EMPLOYEE");
 
@@ -112,6 +142,7 @@ public class EmployeePanel extends javax.swing.JPanel {
         GwenCard.setBackground(new java.awt.Color(21, 24, 32));
         GwenCard.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        GwenIconLbl.setForeground(new java.awt.Color(255, 255, 255));
         GwenIconLbl.setText("G");
 
         GwenNameLbl.setBackground(new java.awt.Color(255, 255, 255));
@@ -132,39 +163,36 @@ public class EmployeePanel extends javax.swing.JPanel {
         GwenCardLayout.setHorizontalGroup(
             GwenCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GwenCardLayout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(GwenDeptLbl)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GwenCardLayout.createSequentialGroup()
-                .addGap(0, 120, Short.MAX_VALUE)
-                .addComponent(GwenNameLbl)
-                .addGap(110, 110, 110))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GwenCardLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(GwenCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(GwenCardLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(GwenTypeLbl))
-                    .addGroup(GwenCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GwenCardLayout.createSequentialGroup()
-                            .addComponent(GwenIconLbl)
-                            .addGap(176, 176, 176))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GwenCardLayout.createSequentialGroup()
-                            .addComponent(GwenPosLbl)
-                            .addGap(135, 135, 135)))))
+                        .addGap(141, 141, 141)
+                        .addComponent(GwenDeptLbl))
+                    .addGroup(GwenCardLayout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(GwenIconLbl))
+                    .addGroup(GwenCardLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(GwenNameLbl))
+                    .addGroup(GwenCardLayout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(GwenPosLbl))
+                    .addGroup(GwenCardLayout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(GwenTypeLbl)))
+                .addGap(141, 141, 141))
         );
         GwenCardLayout.setVerticalGroup(
             GwenCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GwenCardLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(28, 28, 28)
                 .addComponent(GwenIconLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(GwenNameLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(GwenDeptLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(GwenPosLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(GwenTypeLbl)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -174,6 +202,7 @@ public class EmployeePanel extends javax.swing.JPanel {
         ZildCard.setForeground(new java.awt.Color(255, 255, 255));
         ZildCard.setPreferredSize(new java.awt.Dimension(370, 157));
 
+        ZildIconLbl.setForeground(new java.awt.Color(255, 255, 255));
         ZildIconLbl.setText("Z");
 
         ZildNameLbl.setForeground(new java.awt.Color(232, 234, 240));
@@ -193,41 +222,46 @@ public class EmployeePanel extends javax.swing.JPanel {
         ZildCardLayout.setHorizontalGroup(
             ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ZildCardLayout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
                 .addGroup(ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ZildCardLayout.createSequentialGroup()
-                        .addComponent(ZildDeptLbl)
-                        .addGap(162, 162, 162))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ZildCardLayout.createSequentialGroup()
-                        .addGroup(ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ZildCardLayout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(ZildIconLbl))
+                    .addGroup(ZildCardLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ZildNameLbl)
                             .addGroup(ZildCardLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(34, 34, 34)
-                                .addComponent(ZildIconLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ZildNameLbl)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(ZildCardLayout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(ZildTypeLbl))
-                                .addComponent(ZildPosLbl)))
-                        .addGap(144, 144, 144))))
+                                .addGap(103, 103, 103)
+                                .addGroup(ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ZildPosLbl)
+                                    .addGroup(ZildCardLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(ZildTypeLbl))))))
+                    .addGroup(ZildCardLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(ZildDeptLbl)))
+                .addContainerGap())
         );
         ZildCardLayout.setVerticalGroup(
             ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ZildCardLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ZildIconLbl)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ZildNameLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ZildDeptLbl)
+                    .addGroup(ZildCardLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel1))
+                    .addGroup(ZildCardLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(ZildIconLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ZildNameLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ZildDeptLbl)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ZildPosLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ZildTypeLbl)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
 
         BenzCard.setBackground(new java.awt.Color(21, 24, 32));
@@ -254,37 +288,38 @@ public class EmployeePanel extends javax.swing.JPanel {
         BenzCardLayout.setHorizontalGroup(
             BenzCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BenzCardLayout.createSequentialGroup()
-                .addGap(0, 130, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(126, 126, 126))
+                .addGap(122, 122, 122))
             .addGroup(BenzCardLayout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BenzCardLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(160, 160, 160)
                 .addGroup(BenzCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
                     .addGroup(BenzCardLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
+                        .addComponent(jLabel4))
+                    .addGroup(BenzCardLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel7))
+                    .addComponent(jLabel3)
+                    .addGroup(BenzCardLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel5)))
-                .addGap(149, 149, 149))
+                .addGap(143, 143, 143))
         );
         BenzCardLayout.setVerticalGroup(
             BenzCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BenzCardLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -293,31 +328,29 @@ public class EmployeePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(110, 110, 110)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(EmpLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ImportBtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 59, Short.MAX_VALUE)
-                                .addComponent(GwenCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(135, 135, 135)
-                                .addComponent(ZildCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(109, 109, 109)
-                                .addComponent(BenzCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(EmpLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ImportBtn)
                         .addGap(77, 77, 77))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnFilterAll)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnFilterFull)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnFilterPart)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnFilterIntern)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(GwenCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnFilterAll)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnFilterFull)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnFilterPart)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnFilterIntern)))
+                        .addGap(193, 193, 193)
+                        .addComponent(ZildCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
+                        .addComponent(BenzCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,14 +367,14 @@ public class EmployeePanel extends javax.swing.JPanel {
                     .addComponent(BtnFilterIntern))
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BenzCard, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                    .addComponent(ZildCard, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(BenzCard, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(ZildCard, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addComponent(GwenCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(433, Short.MAX_VALUE))
+                .addContainerGap(472, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BenzCard;
     private javax.swing.JButton BtnFilterFull;
