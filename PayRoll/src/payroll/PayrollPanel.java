@@ -8,12 +8,7 @@ public class PayrollPanel extends javax.swing.JPanel {
     public PayrollPanel() {
         initComponents();
         String[] columns = {"Month", "Payroll Type", "Earnings", "Taxes", "Total Pay", "Status"};
-    Object[][] data = {
-        {"January 2026",  "Regular", "₱87,030.00", "₱2,230.00", "₱80,000.00", "Complete"},
-        {"February 2026", "Regular", "₱87,030.00", "₱2,230.00", "₱80,000.00", "Complete"},
-        {"March 2026",    "Regular", "₱87,030.00", "₱2,230.00", "₱80,000.00", "Processing"},
-        {"April 2026",    "Regular", "₱87,030.00", "₱2,230.00", "₱80,000.00", "Upcoming"},
-    };
+    Object[][] data = {};
     payrollTable.setModel(new javax.swing.table.DefaultTableModel(data, columns));
     payrollTable.setBackground(new java.awt.Color(21, 24, 32));
     payrollTable.setForeground(new java.awt.Color(232, 234, 240));

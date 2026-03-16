@@ -14,6 +14,7 @@ public class DashboardForm extends javax.swing.JFrame {
     contentPanel.add(new AttendancePanel(), "attendance");
     contentPanel.add(new CalendarPanel(), "calendar");
     contentPanel.add(new PayrollPanel(), "payroll");
+    contentPanel.add(new PaySlipPanel(), "payslip");
     
 
     // Live date
@@ -39,6 +40,30 @@ public class DashboardForm extends javax.swing.JFrame {
         new LoginForm().setVisible(true);
         dispose();
     });
+    totalEmpValueLbl.setText("0");
+
+FulltimeValueLbl.setText("0");
+PartimeValueLbl.setText("0");
+InternValueLBL.setText("0");
+
+GwenLbl.setText("-");
+GwenDeptLbl.setText("-");
+GwenIconLbl.setText("-");
+
+ZildLbl.setText("-");
+ZildDeptLbl.setText("-");
+ZildIconLbl.setText("-");
+
+BenzaliLbl.setText("-");
+BenzDeptLbl.setText("-");
+BenzIconLbl.setText("-");
+
+OntimeBar.setValue(0);
+LateBar.setValue(0);
+AbsentBar.setValue(0);
+jLabel1.setText("● On Time  0%");
+jLabel2.setText("● Late  0%");
+jLabel3.setText("● Absent  0%");
 }
 
 private void showCard(String card) {

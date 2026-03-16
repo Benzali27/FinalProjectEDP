@@ -1,6 +1,8 @@
 
 package payroll;
 
+import payroll.AddEmployeeDialog;
+
 
 public class EmployeePanel extends javax.swing.JPanel {
 
@@ -42,7 +44,7 @@ public class EmployeePanel extends javax.swing.JPanel {
     
     GwenCard.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Gweneth Angela Santiago\nEngineering | Senior Developer\nFull-Time");
+            javax.swing.JOptionPane.showMessageDialog(null, "Employee Name\nDepartment | Position\nType");
         }
         public void mouseEntered(java.awt.event.MouseEvent evt) {
             GwenCard.setBackground(new java.awt.Color(28, 32, 48));
@@ -55,7 +57,7 @@ public class EmployeePanel extends javax.swing.JPanel {
     
     ZildCard.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Zildjian Fajardo\nDesign | UI/UX Designer\nPart-Time");
+            javax.swing.JOptionPane.showMessageDialog(null, "Employee Name\nDepartment | Position\nType");
         }
         public void mouseEntered(java.awt.event.MouseEvent evt) {
             ZildCard.setBackground(new java.awt.Color(28, 32, 48));
@@ -68,7 +70,7 @@ public class EmployeePanel extends javax.swing.JPanel {
     
     BenzCard.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Benzali Dail Mat Paat\nEngineering | Dev Intern\nIntern");
+           javax.swing.JOptionPane.showMessageDialog(null, "Employee Name\nDepartment | Position\nType");
         }
         public void mouseEntered(java.awt.event.MouseEvent evt) {
             BenzCard.setBackground(new java.awt.Color(28, 32, 48));
@@ -78,7 +80,13 @@ public class EmployeePanel extends javax.swing.JPanel {
             BenzCard.setBackground(new java.awt.Color(21, 24, 32));
         }
     });
+     AddEmpBtn.addActionListener(e -> {
+        AddEmployeeDialog dialog = new AddEmployeeDialog(null, true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    });
 }
+
 
 
     @SuppressWarnings("unchecked")
@@ -86,7 +94,7 @@ public class EmployeePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         EmpLbl = new javax.swing.JLabel();
-        ImportBtn = new javax.swing.JButton();
+        AddEmpBtn = new javax.swing.JButton();
         btnFilterAll = new javax.swing.JButton();
         BtnFilterFull = new javax.swing.JButton();
         BtnFilterPart = new javax.swing.JButton();
@@ -118,10 +126,10 @@ public class EmployeePanel extends javax.swing.JPanel {
         EmpLbl.setForeground(new java.awt.Color(255, 255, 255));
         EmpLbl.setText("EMPLOYEE");
 
-        ImportBtn.setBackground(new java.awt.Color(21, 24, 32));
-        ImportBtn.setForeground(new java.awt.Color(255, 255, 255));
-        ImportBtn.setText("Import");
-        ImportBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AddEmpBtn.setBackground(new java.awt.Color(21, 24, 32));
+        AddEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        AddEmpBtn.setText("Add Employee");
+        AddEmpBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnFilterAll.setBackground(new java.awt.Color(79, 142, 247));
         btnFilterAll.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,16 +155,16 @@ public class EmployeePanel extends javax.swing.JPanel {
 
         GwenNameLbl.setBackground(new java.awt.Color(255, 255, 255));
         GwenNameLbl.setForeground(new java.awt.Color(232, 234, 240));
-        GwenNameLbl.setText("Gweneth Angela Santiago");
+        GwenNameLbl.setText("Employee Name");
 
         GwenDeptLbl.setForeground(new java.awt.Color(25, 93, 120));
-        GwenDeptLbl.setText("Engineering");
+        GwenDeptLbl.setText("Department");
 
         GwenPosLbl.setForeground(new java.awt.Color(85, 93, 120));
-        GwenPosLbl.setText("Senior Developer");
+        GwenPosLbl.setText("Position");
 
         GwenTypeLbl.setForeground(new java.awt.Color(79, 142, 247));
-        GwenTypeLbl.setText("● Full-Time");
+        GwenTypeLbl.setText("Type");
 
         javax.swing.GroupLayout GwenCardLayout = new javax.swing.GroupLayout(GwenCard);
         GwenCard.setLayout(GwenCardLayout);
@@ -171,14 +179,15 @@ public class EmployeePanel extends javax.swing.JPanel {
                         .addGap(166, 166, 166)
                         .addComponent(GwenIconLbl))
                     .addGroup(GwenCardLayout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(129, 129, 129)
                         .addComponent(GwenNameLbl))
                     .addGroup(GwenCardLayout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(GwenPosLbl))
-                    .addGroup(GwenCardLayout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addComponent(GwenTypeLbl)))
+                        .addGroup(GwenCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(GwenPosLbl)
+                            .addGroup(GwenCardLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(GwenTypeLbl)))))
                 .addGap(141, 141, 141))
         );
         GwenCardLayout.setVerticalGroup(
@@ -206,16 +215,16 @@ public class EmployeePanel extends javax.swing.JPanel {
         ZildIconLbl.setText("Z");
 
         ZildNameLbl.setForeground(new java.awt.Color(232, 234, 240));
-        ZildNameLbl.setText("Zildjian Fajardo");
+        ZildNameLbl.setText("Employee Name");
 
         ZildDeptLbl.setForeground(new java.awt.Color(153, 51, 0));
-        ZildDeptLbl.setText("Designs");
+        ZildDeptLbl.setText("Department");
 
         ZildPosLbl.setForeground(new java.awt.Color(153, 102, 0));
-        ZildPosLbl.setText("UI/UX Designer");
+        ZildPosLbl.setText("Position");
 
         ZildTypeLbl.setForeground(new java.awt.Color(247, 147, 79));
-        ZildTypeLbl.setText("● Part-Time");
+        ZildTypeLbl.setText("Type");
 
         javax.swing.GroupLayout ZildCardLayout = new javax.swing.GroupLayout(ZildCard);
         ZildCard.setLayout(ZildCardLayout);
@@ -228,19 +237,20 @@ public class EmployeePanel extends javax.swing.JPanel {
                         .addComponent(ZildIconLbl))
                     .addGroup(ZildCardLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addGroup(ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ZildNameLbl)
+                        .addComponent(jLabel1)
+                        .addGap(103, 103, 103)
+                        .addComponent(ZildNameLbl))
+                    .addGroup(ZildCardLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addGroup(ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ZildDeptLbl)
                             .addGroup(ZildCardLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(103, 103, 103)
+                                .addGap(6, 6, 6)
                                 .addGroup(ZildCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ZildPosLbl)
                                     .addGroup(ZildCardLayout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(ZildTypeLbl))))))
-                    .addGroup(ZildCardLayout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(ZildDeptLbl)))
+                                        .addComponent(ZildTypeLbl)))))))
                 .addContainerGap())
         );
         ZildCardLayout.setVerticalGroup(
@@ -252,14 +262,14 @@ public class EmployeePanel extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(ZildCardLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(ZildIconLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ZildNameLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ZildDeptLbl)))
+                        .addComponent(ZildIconLbl)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ZildNameLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ZildDeptLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ZildPosLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(ZildTypeLbl)
                 .addGap(12, 12, 12))
         );
@@ -272,16 +282,16 @@ public class EmployeePanel extends javax.swing.JPanel {
         jLabel7.setText("B");
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Benzali Dail Mat Paat");
+        jLabel2.setText("Employee Name");
 
         jLabel3.setForeground(new java.awt.Color(25, 93, 120));
-        jLabel3.setText("Engineering");
+        jLabel3.setText("department");
 
         jLabel4.setForeground(new java.awt.Color(85, 93, 120));
-        jLabel4.setText("Dev Intern");
+        jLabel4.setText("Position");
 
         jLabel5.setForeground(new java.awt.Color(79, 247, 176));
-        jLabel5.setText(" ● Intern");
+        jLabel5.setText("Type");
 
         javax.swing.GroupLayout BenzCardLayout = new javax.swing.GroupLayout(BenzCard);
         BenzCard.setLayout(BenzCardLayout);
@@ -333,11 +343,10 @@ public class EmployeePanel extends javax.swing.JPanel {
                         .addGap(97, 97, 97)
                         .addComponent(EmpLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ImportBtn)
+                        .addComponent(AddEmpBtn)
                         .addGap(77, 77, 77))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(GwenCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnFilterAll)
                                 .addGap(18, 18, 18)
@@ -345,12 +354,14 @@ public class EmployeePanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(BtnFilterPart)
                                 .addGap(18, 18, 18)
-                                .addComponent(BtnFilterIntern)))
-                        .addGap(193, 193, 193)
-                        .addComponent(ZildCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
-                        .addComponent(BenzCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
+                                .addComponent(BtnFilterIntern))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(GwenCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ZildCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BenzCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,7 +369,7 @@ public class EmployeePanel extends javax.swing.JPanel {
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EmpLbl)
-                    .addComponent(ImportBtn))
+                    .addComponent(AddEmpBtn))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFilterAll)
@@ -370,12 +381,13 @@ public class EmployeePanel extends javax.swing.JPanel {
                     .addComponent(BenzCard, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addComponent(ZildCard, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addComponent(GwenCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(472, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddEmpBtn;
     private javax.swing.JPanel BenzCard;
     private javax.swing.JButton BtnFilterFull;
     private javax.swing.JButton BtnFilterIntern;
@@ -387,7 +399,6 @@ public class EmployeePanel extends javax.swing.JPanel {
     private javax.swing.JLabel GwenNameLbl;
     private javax.swing.JLabel GwenPosLbl;
     private javax.swing.JLabel GwenTypeLbl;
-    private javax.swing.JButton ImportBtn;
     private javax.swing.JPanel ZildCard;
     private javax.swing.JLabel ZildDeptLbl;
     private javax.swing.JLabel ZildIconLbl;
@@ -403,3 +414,4 @@ public class EmployeePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
+

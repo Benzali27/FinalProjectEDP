@@ -3,11 +3,16 @@ public class LoginForm extends javax.swing.JFrame {
 
     
     public LoginForm() {
-      initComponents();
+    initComponents();
     setLocationRelativeTo(null);
     setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     getContentPane().setBackground(new java.awt.Color(13, 15, 20));
     errorLbl.setText(" ");
+
+    Roles.addActionListener(e -> {
+        boolean isEmployee = Roles.getSelectedItem().toString().equals("Employee");
+        usernameLbl.setText(isEmployee ? "EMPLOYEE ID" : "USERNAME");
+    });
 }
 
  
@@ -29,6 +34,7 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         loginPanel.setBackground(new java.awt.Color(21, 24, 32));
+        loginPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         loginPanel.setPreferredSize(new java.awt.Dimension(1800, 800));
 
         titleLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -60,48 +66,52 @@ public class LoginForm extends javax.swing.JFrame {
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(862, 862, 862)
-                .addComponent(Roles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addContainerGap(837, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(errorLbl)
+                .addGap(871, 871, 871))
+            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(355, 355, 355)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(passwordLbl)
-                            .addComponent(usernameLbl)
-                            .addComponent(titleLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(usernameTxt)
-                            .addComponent(passwordField))
-                        .addGap(818, 818, 818))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                        .addComponent(signinBtn)
-                        .addGap(853, 853, 853))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                        .addComponent(errorLbl)
-                        .addGap(871, 871, 871))))
+                            .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameLbl)))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(388, 388, 388)
+                        .addComponent(signinBtn)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleLbl)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(Roles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(383, 383, 383))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(72, 72, 72)
                 .addComponent(titleLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Roles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(usernameLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(passwordLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(signinBtn)
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addComponent(errorLbl)
-                .addContainerGap(420, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(loginPanel, new java.awt.GridBagConstraints());
@@ -123,7 +133,16 @@ public class LoginForm extends javax.swing.JFrame {
             errorLbl.setText("Incorrect username or password.");
         }
     } else {
-        errorLbl.setText("Employee login coming soon.");
+       // TODO (SQL groupmate): replace this block with a real query:
+    // SELECT employee_id, password_hash FROM employees
+    // WHERE employee_id = ? AND status = 'Active'
+    // Then verify the password using BCrypt
+    if (!username.isEmpty() && !password.isEmpty()) {
+        new DashboardForm().setVisible(true);
+        this.dispose();
+    } else {
+        errorLbl.setText("Enter your Employee ID and password.");
+    }
     }
 
     }//GEN-LAST:event_signinBtnActionPerformed

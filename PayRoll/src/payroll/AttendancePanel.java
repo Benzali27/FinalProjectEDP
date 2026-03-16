@@ -8,22 +8,16 @@ public class AttendancePanel extends javax.swing.JPanel {
     public AttendancePanel() {
         initComponents();
         String[] columns = {"Employee", "Date", "Time In", "Time Out", "Hours", "Status"};
-Object[][] data = {
-    {"Gweneth Angela Santiago",  "Mar 7, 2026", "08:00 AM", "05:00 PM", "8h",     "Present"},
-    {"Gweneth Angela Santiago",  "Mar 6, 2026", "08:01 AM", "05:00 PM", "8h",     "Present"},
-    {"Gweneth Angela Santiago",  "Mar 5, 2026", "09:05 AM", "05:00 PM", "7h 55m", "Late"},
-    {"Zildjian Fajardo",         "Mar 7, 2026", "08:30 AM", "05:20 PM", "8h 50m", "Present"},
-    {"Zildjian Fajardo",         "Mar 6, 2026", "08:00 AM", "05:00 PM", "8h",     "Present"},
-    {"Zildjian Fajardo",         "Mar 4, 2026", "09:10 AM", "05:00 PM", "7h 50m", "Late"},
-    {"Benzali Dail Mat Paat",    "Mar 7, 2026", "08:45 AM", "05:07 PM", "8h",     "Present"},
-    {"Benzali Dail Mat Paat",    "Mar 6, 2026", "08:00 AM", "05:00 PM", "8h",     "Present"},
-    {"Benzali Dail Mat Paat",    "Feb 28, 2026","—",        "—",        "—",      "Absent"},
-};
+Object[][] data = {};
 AttendanceTable.setModel(new javax.swing.table.DefaultTableModel(data, columns));
+
+PresentValueLbl.setText("0");
+AbsentValueLbl.setText("0");
+LateValueLbl.setText("0");
 
 AttendanceTable.getTableHeader().setBackground(new java.awt.Color(21, 24, 32));
 AttendanceTable.getTableHeader().setForeground(new java.awt.Color(85, 93, 120));
-AttendanceTable.setFillsViewportHeight(false);
+AttendanceTable.setFillsViewportHeight(false);  
     jScrollPane1.getViewport().setBackground(new java.awt.Color(13, 15, 20));
     jScrollPane1.setBackground(new java.awt.Color(13, 15, 20));
     }
@@ -93,7 +87,7 @@ AttendanceTable.setFillsViewportHeight(false);
                         .addGap(6, 6, 6)
                         .addComponent(PresentValueLbl))
                     .addComponent(PresentTitleLbl))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         PresentCardLayout.setVerticalGroup(
             PresentCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +208,7 @@ AttendanceTable.setFillsViewportHeight(false);
                     .addComponent(LeaveSubLbl)
                     .addComponent(LeaveValueLbl)
                     .addComponent(LeaveTitleLbl))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         LeaveCardLayout.setVerticalGroup(
             LeaveCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,6 +257,7 @@ AttendanceTable.setFillsViewportHeight(false);
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1678, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(PresentCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(156, 156, 156)
@@ -270,9 +265,8 @@ AttendanceTable.setFillsViewportHeight(false);
                         .addGap(165, 165, 165)
                         .addComponent(LateCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(215, 215, 215)
-                        .addComponent(LeaveCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1735, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(88, 88, 88))
+                        .addComponent(LeaveCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(145, 145, 145))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,8 +282,8 @@ AttendanceTable.setFillsViewportHeight(false);
                     .addComponent(LateCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LeaveCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(326, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

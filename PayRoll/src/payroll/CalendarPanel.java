@@ -9,20 +9,7 @@ public class CalendarPanel extends javax.swing.JPanel {
         initComponents();
     
     String[] columns = {"Month", "Total Working Days", "Pay Date", "Status"};
-    Object[][] data = {
-        {"January",   "20 Days", "Jan 31, 2026", "Complete"},
-        {"February",  "20 Days", "Feb 28, 2026", "Complete"},
-        {"March",     "20 Days", "Mar 31, 2026", "Processing"},
-        {"April",     "20 Days", "Apr 30, 2026", "Upcoming"},
-        {"May",       "20 Days", "May 31, 2026", "Upcoming"},
-        {"June",      "20 Days", "Jun 30, 2026", "Upcoming"},
-        {"July",      "20 Days", "Jul 31, 2026", "Upcoming"},
-        {"August",    "20 Days", "Aug 31, 2026", "Upcoming"},
-        {"September", "20 Days", "Sep 30, 2026", "Upcoming"},
-        {"October",   "20 Days", "Oct 31, 2026", "Upcoming"},
-        {"November",  "20 Days", "Nov 30, 2026", "Upcoming"},
-        {"December",  "20 Days", "Dec 31, 2026", "Upcoming"},
-    };
+    Object[][] data = {};
     calendarTable.setModel(new javax.swing.table.DefaultTableModel(data, columns));
     calendarTable.setBackground(new java.awt.Color(21, 24, 32));
     calendarTable.setForeground(new java.awt.Color(232, 234, 240));
@@ -216,7 +203,7 @@ public class CalendarPanel extends javax.swing.JPanel {
                         .addComponent(WorkingDaysCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(221, 221, 221)
                         .addComponent(PaymentCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 438, Short.MAX_VALUE)))
+                        .addGap(0, 125, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -233,7 +220,7 @@ public class CalendarPanel extends javax.swing.JPanel {
                     .addComponent(PaymentCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(StatusCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
